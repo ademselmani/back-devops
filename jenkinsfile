@@ -30,6 +30,15 @@ pipeline {
                 sh 'npm run build-dev'
             }
         }
+
+        // Ajout du stage pour la construction des images Docker
+        stage('Building images (node and mongo)') {
+            steps {
+                script {
+                    sh 'docker-compose build'
+                }
+            }
+        }
     }
 
     post {
